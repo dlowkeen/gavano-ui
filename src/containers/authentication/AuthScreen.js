@@ -8,9 +8,9 @@ import * as WebBrowser from 'expo-web-browser';
 export default class AuthScreen extends React.Component {
   render() {
     return (
-      <View style={ApplicationStyles.screen.container}>
+      <View style={ApplicationStyles.container}>
         <Text style={ApplicationStyles.logoTitle}>Gavano</Text>
-        <Text style={ApplicationStyles.screen.sectionText}>
+        <Text style={ApplicationStyles.sectionText}>
           Make your life carbon neutral.
         </Text>
         <RoundedButton label="Join now" onPress={this.goToJoinNow} />

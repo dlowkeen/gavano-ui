@@ -12,7 +12,7 @@ export default class SignInScreen extends React.Component {
 
   render() {
     return (
-      <View style={ApplicationStyles.screen.container}>
+      <View style={ApplicationStyles.container}>
         <Text style={ApplicationStyles.logoTitle}>Gavano</Text>
         <GenericInput
           onChangeText={this.handleEmailChange}

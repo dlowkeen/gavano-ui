@@ -21,7 +21,7 @@ class HomeScreen extends React.Component {
   render() {
     console.log('this.props home screen', this.props);
     return (
-      <View style={ApplicationStyles.screen.container}>
+      <View style={ApplicationStyles.container}>
         <Button title="Recent Offsets" onPress={this._showMoreApp} />
         <Button title="Settings" onPress={this.goToSettings} />
         <Button title="Sign Out" onPress={this._signOutAsync} />

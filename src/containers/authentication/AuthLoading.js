@@ -27,7 +27,7 @@ export default class AuthLoadingScreen extends React.Component {
   // Render any loading content that you like here
   render() {
     return (
-      <View style={ApplicationStyles.screen.container}>
+      <View style={ApplicationStyles.container}>
         <ActivityIndicator />
         <StatusBar barStyle="default" />
         <Text style={ApplicationStyles.logoTitle}>Gavano</Text>

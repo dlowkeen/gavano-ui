@@ -4,7 +4,18 @@ import {GenericInput, RoundedButton} from '../../components/ui';
 import {ApplicationStyles} from '../../themes';
 import {ROUTES} from '../../utilities/constants';
 
-export default class JoinScreen extends React.Component {
+interface IJoinScreenProps {
+  navigation: any;
+}
+
+interface IJoinScreenState {
+  email: string;
+  firstName: string;
+  lastName: string;
+  password: string;
+}
+
+export default class JoinScreen extends React.Component<IJoinScreenProps, IJoinScreenState> {
   state = {email: '', firstName: '', lastName: '', password: ''};
 
   handleEmailChange = email => this.setState({email});
@@ -14,7 +25,7 @@ export default class JoinScreen extends React.Component {
 
   render() {
     return (
-      <View style={ApplicationStyles.screen.container}>
+      <View style={ApplicationStyles.container}>
         <Text style={ApplicationStyles.logoTitle}>Gavano</Text>
         <GenericInput
           onChangeText={this.handleFirstNameChange}
