@@ -5,21 +5,12 @@ import {authActions} from '../../actions';
 import {AsyncStorage, Button, View} from 'react-native';
 import {ApplicationStyles} from '../../themes';
 
-const user = {
-  name: 'bob',
-};
-
 class HomeScreen extends React.Component {
   static navigationOptions = {
     title: 'Gavano',
   };
 
-  componentDidMount() {
-    this.props.authActions.login(user);
-  }
-
   render() {
-    console.log('this.props home screen', this.props);
     return (
       <View style={ApplicationStyles.container}>
         <Button title="Recent Offsets" onPress={this._showMoreApp} />

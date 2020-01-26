@@ -1,11 +1,17 @@
 import React from 'react';
-import {AsyncStorage, Text, View} from 'react-native';
+import axios from 'axios';
+import {Text, View} from 'react-native';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import {authActions} from '../../actions';
 import {GenericInput, RoundedButton} from '../../components/ui';
 import {ApplicationStyles} from '../../themes';
 import {ROUTES} from '../../utilities/constants';
 
 interface IJoinScreenProps {
   navigation: any;
+  authActions: any;
+  auth: any;
 }
 
 interface IJoinScreenState {
@@ -15,7 +21,7 @@ interface IJoinScreenState {
   password: string;
 }
 
-export default class JoinScreen extends React.Component<IJoinScreenProps, IJoinScreenState> {
+class JoinScreen extends React.Component<IJoinScreenProps, IJoinScreenState> {
   state = {email: '', firstName: '', lastName: '', password: ''};
 
   handleEmailChange = email => this.setState({email});
@@ -53,7 +59,33 @@ export default class JoinScreen extends React.Component<IJoinScreenProps, IJoinS
   }
 
   _signInAsync = async () => {
-    await AsyncStorage.setItem('userToken', 'abc');
+    const { email, firstName, lastName, password } = this.state;
+    const user = {
+      email,
+      firstName,
+      lastName,
+      password,
+    }
+    const { data } = await axios.post('http://localhost:3000/auth/signup', user);
+    console.log('data', data);
+    this.props.authActions.login(data);
     this.props.navigation.navigate(ROUTES.APP);
   };
 }
+
+export function mapStateToProps(state) {
+  return {
+    auth: state.authReducer,
+  };
+}
+
+export function mapDispatchToProps(dispatch) {
+  return {
+    authActions: bindActionCreators(authActions, dispatch),
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(JoinScreen);
