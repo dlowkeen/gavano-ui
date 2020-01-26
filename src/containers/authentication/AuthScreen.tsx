@@ -5,7 +5,13 @@ import {ApplicationStyles} from '../../themes';
 import {ROUTES} from '../../utilities/constants';
 import * as WebBrowser from 'expo-web-browser';
 
-export default class AuthScreen extends React.Component {
+interface IAuthScreenProps {
+  navigation: any;
+  authActions: any;
+  auth: any;
+}
+
+export default class AuthScreen extends React.Component<IAuthScreenProps> {
   render() {
     return (
       <View style={ApplicationStyles.container}>

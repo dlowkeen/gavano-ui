@@ -5,7 +5,13 @@ import {authActions} from '../../actions';
 import {AsyncStorage, Button, View} from 'react-native';
 import {ApplicationStyles} from '../../themes';
 
-class HomeScreen extends React.Component {
+interface IHomeScreenProps {
+  navigation: any;
+  authActions: any;
+  auth: any;
+}
+
+class HomeScreen extends React.Component<IHomeScreenProps> {
   static navigationOptions = {
     title: 'Gavano',
   };

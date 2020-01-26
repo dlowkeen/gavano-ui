@@ -8,7 +8,13 @@ import {
   View,
 } from 'react-native';
 
-export default class SettingsScreen extends React.Component {
+interface ISettingsScreenProps {
+  navigation: any;
+  authActions: any;
+  auth: any;
+}
+
+export default class SettingsScreen extends React.Component<ISettingsScreenProps> {
   static navigationOptions = {
     title: 'Settings',
   };

@@ -4,7 +4,13 @@ import {GenericInput, RoundedButton} from '../../components/ui';
 import {ApplicationStyles} from '../../themes';
 import {ROUTES} from '../../utilities/constants';
 
-export default class SignInScreen extends React.Component {
+interface ISignInScreenProps {
+  navigation: any;
+  authActions: any;
+  auth: any;
+}
+
+export default class SignInScreen extends React.Component<ISignInScreenProps> {
   state = {email: '', password: ''};
 
   handleEmailChange = email => this.setState({email});

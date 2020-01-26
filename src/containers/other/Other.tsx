@@ -1,7 +1,13 @@
 import React from 'react';
 import {AsyncStorage, Button, StatusBar, StyleSheet, View} from 'react-native';
 
-export default class OtherScreen extends React.Component {
+interface IOtherScreenProps {
+  navigation: any;
+  authActions: any;
+  auth: any;
+}
+
+export default class OtherScreen extends React.Component<IOtherScreenProps> {
   static navigationOptions = {
     title: 'Lots of features here',
   };

@@ -9,9 +9,15 @@ import {
 import {ApplicationStyles} from '../../themes';
 import {ROUTES} from '../../utilities/constants';
 
-export default class AuthLoadingScreen extends React.Component {
-  constructor() {
-    super();
+interface IAuthLoadingScreenProps {
+  navigation: any;
+  authActions: any;
+  auth: any;
+}
+
+export default class AuthLoadingScreen extends React.Component<IAuthLoadingScreenProps> {
+  constructor(props) {
+    super(props);
     this._bootstrapAsync();
   }
 
