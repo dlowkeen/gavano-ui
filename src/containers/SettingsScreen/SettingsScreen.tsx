@@ -7,6 +7,7 @@ import {
   Text,
   View,
 } from 'react-native';
+import * as WebBrowser from 'expo-web-browser';
 
 interface ISettingsScreenProps {
   navigation: any;
@@ -24,6 +25,7 @@ export default class SettingsScreen extends React.Component<ISettingsScreenProps
       <View style={styles.container}>
         <Text>Settings Page (need to add some stuff)</Text>
         <Button title="Sign out" onPress={this._signOutAsync} />
+        <Button title="Add Bank Info" onPress={this._handlePressButtonAsync} />
         <StatusBar barStyle="default" />
       </View>
     );
@@ -32,6 +34,12 @@ export default class SettingsScreen extends React.Component<ISettingsScreenProps
   _signOutAsync = async () => {
     await AsyncStorage.clear();
     this.props.navigation.navigate('Auth');
+  };
+
+  _handlePressButtonAsync = async () => {
+    const blah = 'https://cdn.plaid.com/link/v2/stable/link.html?env=sandbox&selectAccount=false&key=22e27ed508c9ae65d89e11fadcae97&origin=localhost&product=auth,transactions&clientName'
+    let result = await WebBrowser.openBrowserAsync(blah);
+    this.setState({ result });
   };
 }
 
